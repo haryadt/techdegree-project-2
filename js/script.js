@@ -10,8 +10,16 @@ For assistance:
    Check out the "Project Resources" section of the Instructions tab: https://teamtreehouse.com/projects/data-pagination-and-filtering#instructions
    Reach out in your Slack community: https://treehouse-fsjs-102.slack.com/app_redirect?channel=unit-2
 */
+
 const itemsPerPage = 9;
 
+/**
+ * 
+ * @param {*} tag This function will create an element based on the passed tag value 
+ * @param {*} classList The class list that will be added to the tag
+ * @param {*} insertElement The parent element that this tag will insert to
+ * @returns 
+ */
 function createElement(tag, classList, insertElement) {
    const element = document.createElement(tag);
 
@@ -31,6 +39,12 @@ function createElement(tag, classList, insertElement) {
 Create the `showPage` function
 This function will create and insert/append the elements needed to display a "page" of nine students
 */
+
+/**
+ * Show students in a form of cards
+ * @param {*} list The list of student
+ * @param {*} page Page number
+ */
 function showPage(list, page) {
    const startIndex = (page * itemsPerPage) - itemsPerPage;
    const endIndex = page * itemsPerPage;
@@ -71,6 +85,11 @@ function showPage(list, page) {
 Create the `addPagination` function
 This function will create and insert/append the elements needed for the pagination buttons
 */
+
+/**
+ * Add the pagination functionality
+ * @param {*} list The list of student
+ */
 function addPagination(list) {
    const numberOfPaginationButtons = Math.floor(list.length / itemsPerPage);
    const linkList = document.querySelector("ul.link-list");
@@ -100,7 +119,10 @@ function addPagination(list) {
    });
 }
 
-function createStudentSearch(datta) {
+/**
+ * Generate the student search textbox and button 
+ */
+function createStudentSearch() {
    const label = createElement("label", ["student-search"]);
    label.setAttribute("for", "search");
 
@@ -118,10 +140,15 @@ function createStudentSearch(datta) {
    const header = document.getElementsByClassName("header")[0];
    header.insertAdjacentElement("beforeend", label);
 
-   searchStudent(data, input, button);
+   searchStudent(input, button);
 }
 
-function searchStudent(data, searchElement, searchButtonElement) {
+/**
+ * Search and then show the search result
+ * @param {*} searchElement Student search textbox
+ * @param {*} searchButtonElement Student search button
+ */
+function searchStudent(searchElement, searchButtonElement) {
    if(searchElement) {
       const performSearch = (target) => {
          const newData = [];
